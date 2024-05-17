@@ -1,0 +1,111 @@
+1. Configuração da VPS:
+a. Instalação do Sistema Operacional:
+Selecione um sistema operacional adequado para sua VPS. Ubuntu e CentOS são escolhas comuns.
+Conecte-se à sua VPS usando SSH.
+b. Atualização do Sistema e Instalação de Dependências:
+Atualize o sistema operacional:
+sql
+
+sudo apt update
+sudo apt upgrade
+Instale o Python e outras dependências necessárias:
+
+sudo apt install python3 python3-pip python3-venv postgresql postgresql-contrib nginx
+Se estiver usando PostgreSQL como banco de dados, certifique-se de configurá-lo corretamente.
+c. Configuração do Firewall:
+Configure as regras de firewall para permitir tráfego HTTP/HTTPS e SSH:
+
+
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+d. Instalação do Servidor Web:
+Instale o Nginx:
+
+sudo apt install nginx
+Após a instalação, o Nginx será iniciado automaticamente. Verifique se está em execução:
+lua
+
+sudo systemctl status nginx
+
+2. Configuração do Ambiente Virtual:
+a. Criação do Ambiente Virtual:
+Navegue até o diretório do seu projeto Django:
+
+
+cd /caminho/para/seu/projeto
+Crie um ambiente virtual Python:
+
+python3 -m venv myenv
+Ative o ambiente virtual:
+
+
+source myenv/bin/activate
+b. Instalação do Django e Dependências:
+Dentro do ambiente virtual, instale o Django e outras dependências do seu projeto:
+
+pip install django
+
+3. Configuração do Projeto Django:
+a. Upload do Código-fonte:
+Transfira o código-fonte do seu projeto Django para a VPS usando SCP ou SFTP.
+b. Configuração do Projeto Django:
+No diretório do seu projeto, configure as configurações do projeto Django para produção, como as configurações de banco de dados, chaves secretas, configurações de segurança, etc.
+
+4. Configuração do Servidor Web:
+a. Configuração do Nginx:
+Criar um Arquivo de Configuração extensão .conf:
+exemplo: meusite.conf
+
+Navegue até o diretório /etc/nginx/sites-available/:
+
+
+cd /etc/nginx/sites-available/
+Crie um arquivo de configuração para o seu site. Por exemplo, vamos chamá-lo de meusite:
+
+sudo nano meusite
+Adicionar Configurações Básicas:
+
+Dentro deste arquivo, adicione as configurações básicas do servidor web para o seu site. Aqui está um exemplo básico de configuração para um site Django:
+
+
+
+server {
+    listen 80;
+    server_name seu_dominio.com;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        alias /caminho/para/seu/projeto/static/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+Certifique-se de substituir seu_dominio.com pelo seu próprio domínio e /caminho/para/seu/projeto/static/ pelo caminho real para seus arquivos estáticos.
+
+Habilitar o Site:
+
+Crie um link simbólico deste arquivo de configuração dentro do diretório /etc/nginx/sites-enabled/:
+
+
+sudo ln -s /etc/nginx/sites-available/meusite /etc/nginx/sites-enabled/
+Testar a Configuração:
+
+Verifique se a sintaxe do arquivo de configuração está correta:
+
+sudo nginx -t
+Reiniciar o Nginx:
+
+Reinicie o Nginx para aplicar as alterações:
+
+sudo systemctl restart nginx
+Com isso, o Nginx estará configurado para encaminhar as solicitações HTTP/HTTPS para o seu aplicativo Django. Certifique-se de ajustar as configurações de acordo com as necessidades específicas do seu projeto.
+
+

@@ -1,0 +1,3 @@
+('C:\\Users\\usuario\\Documents\\SCRIPT PROGRAMACAO '
+ 'LINEAR\\build\\transporte\\PYZ-00.pyz',
+ [])

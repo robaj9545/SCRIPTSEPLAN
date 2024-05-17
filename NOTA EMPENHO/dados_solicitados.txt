@@ -1,0 +1,7 @@
+codContrato
+observacao
+codigo
+id
+
+
+classificadores -> Unidade Orçamentária - nomeClassificador

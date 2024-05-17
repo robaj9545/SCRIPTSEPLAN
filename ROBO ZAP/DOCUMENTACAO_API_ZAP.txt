@@ -1,0 +1,8 @@
+*DOCUMENTAÇÃO API ZAP:*
+
+https://developers.facebook.com/products/
+https://developers.facebook.com/docs/graph-api/overview/access-levels/
+https://developers.facebook.com/docs/features-reference
+https://developers.facebook.com/docs/permissions
+https://developers.facebook.com/docs/graph-api
+https://developers.facebook.com/docs#apis-sdks
