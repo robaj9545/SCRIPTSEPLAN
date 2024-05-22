@@ -12,3 +12,7 @@ PROBLEMA COM INTERPRETADOR DO PYTHON AO INSTALAR BIBLIOTECAS
 4. Clique na versão do Python exibida ou pressione Ctrl+Shift+P para abrir a paleta de comandos.
 
 5. Digite "Python: Select Interpreter" na paleta de comandos e pressione Enter.
+
+EXTRAIR REQUERIMENTOS DO PROJETO
+pip freeze > requirements.txt
+pip install -r requirements.txt
