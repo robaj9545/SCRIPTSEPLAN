@@ -2,8 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
-from src.servicos_ufs.rpa import RPA, SC
-from src.servicos_ufs.crud import BRONZE_FOLDER, SILVER_FOLDER, GOLD_FOLDER, salvar_dataframe
+from rpa import RPA, SC
+from crud import BRONZE_FOLDER, SILVER_FOLDER, GOLD_FOLDER, salvar_dataframe
 
 
 def extrair_servicos_action(uf: RPA):

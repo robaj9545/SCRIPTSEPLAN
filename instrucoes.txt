@@ -7,3 +7,8 @@ git pull
 git push -u origin main
 ENVIAR DA MAQUINA LOCAL PARA O REPOSITORIO REMOTO DO GIT
 git push --force origin main
+
+PROBLEMA COM INTERPRETADOR DO PYTHON AO INSTALAR BIBLIOTECAS 
+4. Clique na versão do Python exibida ou pressione Ctrl+Shift+P para abrir a paleta de comandos.
+
+5. Digite "Python: Select Interpreter" na paleta de comandos e pressione Enter.
