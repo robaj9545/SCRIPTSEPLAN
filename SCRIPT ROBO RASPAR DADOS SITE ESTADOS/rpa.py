@@ -16,7 +16,7 @@ from unidecode import unidecode
 import pandas as pd
 import sys
 sys.path.insert(0, "./airflow")  # "./airflow"
-from src.servicos_ufs.crud import BRONZE_FOLDER, salvar_dataframe, ler_csv
+from crud import BRONZE_FOLDER, salvar_dataframe, ler_csv
 
 
 TEXT_CONTENT = "textContent"

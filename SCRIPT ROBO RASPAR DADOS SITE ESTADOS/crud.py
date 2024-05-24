@@ -4,14 +4,15 @@ import os
 dag_folder = "servicos_ufs"
 
 BRONZE_FOLDER = os.path.join(
-    os.path.dirname(__file__), "..", "..", "dados", "bronze", dag_folder
+    os.path.dirname(__file__), "dados", "bronze", dag_folder
 )
 SILVER_FOLDER = os.path.join(
-    os.path.dirname(__file__), "..", "..", "dados", "silver", dag_folder
+    os.path.dirname(__file__), "dados", "silver", dag_folder
 )
 GOLD_FOLDER = os.path.join(
-    os.path.dirname(__file__), "..", "..", "dados", "gold", dag_folder
+    os.path.dirname(__file__), "dados", "gold", dag_folder
 )
+
 
 
 def ler_json(folder: str, name="extratos"):
@@ -22,7 +23,7 @@ def ler_json(folder: str, name="extratos"):
         return pd.DataFrame()
 
 
-def ler_csv(folder: str, name="extratos"):
+def ler_csv(folder: str, name:str='extratos'):
     file_path = os.path.join(folder, f"{name}.csv")
     try:
         return pd.read_csv(file_path)
